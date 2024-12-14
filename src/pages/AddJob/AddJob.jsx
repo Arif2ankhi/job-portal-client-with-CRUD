@@ -1,6 +1,13 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddJob = () => {
+
+    const {user } = useAuth();
+    const navigate = useNavigate();
+
 const handleAddJob = e =>{
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -13,6 +20,30 @@ const handleAddJob = e =>{
     newJob.requirements = newJob.requirements.split('\n')
     newJob.responsibilities = newJob.responsibilities.split('\n')
     console.log(newJob);
+
+    fetch('http://localhost:5000/jobs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newJob)
+    })
+
+        .then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Job has been added successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                navigate('/myPostedJobs')
+            }
+        })
+
+
 }
 
   return (
@@ -120,7 +151,7 @@ const handleAddJob = e =>{
                     <label className="label">
                         <span className="label-text">HR Email</span>
                     </label>
-                    <input type="text" defaultValue= "required" name='hr_email' placeholder="HR Email" className="input input-bordered" required />
+                    <input type="text" defaultValue= {user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
                 </div>
                 {/* application Deadline */}
                 <div className="form-control">
