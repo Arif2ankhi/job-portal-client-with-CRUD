@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 const ViewApplications = () => {
     const applications = useLoaderData();
+    console.log(applications)
 
     const handleStatusUpdate = (e, id) => {
         console.log(e.target.value, id)
@@ -52,7 +53,7 @@ const ViewApplications = () => {
                         {
                             applications.map((app, index) => <tr key={app._id}>
                                 <th>{index + 1}</th>
-                                <td>{app.applicant_email}</td>
+                                <td>{app.applicant_id}</td>
                                 <td>Quality Control Specialist</td>
                                 <td>
                                     <select
