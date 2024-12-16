@@ -19,3 +19,6 @@ http://localhost:5000/job-application?email=arif2ankhi@gmail.com
 http://localhost:5000/job-applications/jobs/675ccb8a7aa377457739ca97
 
 http://localhost:5000/jobs
+
+
+<!-- require('crypto').randomBytes(64).toString('hex') -->

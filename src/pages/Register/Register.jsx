@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import React, { useContext } from "react";
 import registerLottieData from '../../assets/Lottie/register.json'
 import AuthContext from "../../context/AuthContext/AuthContext";
-import favicon from '../../../public/favicon.png';
+// import favicon from '../../../public/favicon.png';
 import SocialLogin from "../shared/SocialLogin";
 
 
