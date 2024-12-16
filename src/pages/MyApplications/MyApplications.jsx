@@ -11,6 +11,7 @@ useEffect(() => {
     // .then(res => res.json())
     // .then(data => setJobs(data))
 
+    // axios.get(`http://localhost:5000/job-application?email=${user.email}`, {withCredentials:true} )
     axios.get(`http://localhost:5000/job-application?email=${user.email}`, {withCredentials:true} )
     .then(res => console.log(setJobs(res.data)))
 
